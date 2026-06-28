@@ -1,0 +1,7 @@
+query {
+  products(currencyCode: "USD") {
+    id
+    name
+    price
+  }
+}
