@@ -19,5 +19,5 @@ const server = new ApolloServer({
 });
 
 server.listen({ port: 4002 }).then(({ url }) => {
-  console.log(`🚀 currency-dgs ready at ${url}`);
+  console.log(`currency-dgs ready at ${url}`);
 });

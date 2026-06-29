@@ -7,7 +7,14 @@ exports.resolvers = {
         `http://localhost:8080/api/products?currencyCode=${currencyCode}`,
       );
 
+      if (!res.ok) {
+        const text = await res.text();
+        console.error("ERROR RESPONSE:", text);
+        throw new Error("Backend error: " + text);
+      }
+
       const data = await res.json();
+      console.log("Calling products API...", data);
 
       return data.map((p) => ({
         id: p.id,
