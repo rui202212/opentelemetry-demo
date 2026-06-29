@@ -1,8 +1,7 @@
-import { ApolloServer } from "apollo-server";
-import { buildSubgraphSchema } from "@apollo/subgraph";
-import { readFileSync } from "fs";
-import { resolvers } from "./resolvers";
-import { gql } from "apollo-server";
+const { ApolloServer, gql } = require("apollo-server");
+const { buildSubgraphSchema } = require("@apollo/subgraph");
+const { readFileSync } = require("fs");
+const { resolvers } = require("./resolvers");
 
 const typeDefs = gql(readFileSync("./schema.graphql", { encoding: "utf-8" }));
 

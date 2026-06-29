@@ -1,15 +1,15 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
-export const resolvers = {
+exports.resolvers = {
   Query: {
-    products: async (_: any, { currencyCode }: any) => {
+    products: async (_, { currencyCode }) => {
       const res = await fetch(
-        `http://frontend-proxy:8080/api/products?currencyCode=${currencyCode}`,
+        `http://localhost:8080/api/products?currencyCode=${currencyCode}`,
       );
 
       const data = await res.json();
 
-      return data.map((p: any) => ({
+      return data.map((p) => ({
         id: p.id,
         name: p.name,
         description: p.description,
