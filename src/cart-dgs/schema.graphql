@@ -1,0 +1,24 @@
+type Query {
+  cart(sessionId: ID!, currencyCode: String!): Cart
+}
+
+type Mutation {
+  addToCart(userId: ID!, productId: ID!, quantity: Int!): Cart
+}
+
+type Cart {
+  userId: ID!
+  items: [CartItem]
+}
+
+type CartItem {
+  productId: ID!
+  quantity: Int!
+  product: Product
+}
+
+type Product {
+  id: ID!
+  name: String
+  description: String
+}

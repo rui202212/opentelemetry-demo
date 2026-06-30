@@ -12,6 +12,10 @@ const gateway = new ApolloGateway({
         name: "currency",
         url: "http://localhost:4002",
       },
+      {
+        name: "cart",
+        url: "http://localhost:4003",
+      },
     ],
   }),
 });

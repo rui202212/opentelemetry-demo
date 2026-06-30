@@ -1,0 +1,30 @@
+const TEST_SESSION =
+  "b2db7761-fb9d-4e0c-85df-5bd64446a484";
+
+mutation {
+  addToCart(
+    userId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
+    productId: "66VCHSJNUP"
+    quantity: 1
+  ) {
+    userId
+    items {
+      productId
+      quantity
+    }
+  }
+}
+
+mutation {
+  addToCart(
+    userId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
+    productId: "LS4PSXUNUM"
+    quantity: 2
+  ) {
+    userId
+    items {
+      productId
+      quantity
+    }
+  }
+}
