@@ -1,0 +1,99 @@
+query {
+  products(currencyCode: "USD") {
+    id
+    name
+  }
+
+  currencies
+
+  cart(sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484", currencyCode: "USD") {
+    userId
+  }
+}
+
+
+Response:
+{
+  "data": {
+    "products": [
+      {
+        "id": "0PUK6V6EV0",
+        "name": "Solar System Color Imager"
+      },
+      {
+        "id": "1YMWWN1N4O",
+        "name": "Eclipsmart Travel Refractor Telescope"
+      },
+      {
+        "id": "2ZYFJ3GM2N",
+        "name": "Roof Binoculars"
+      },
+      {
+        "id": "66VCHSJNUP",
+        "name": "Starsense Explorer Refractor Telescope"
+      },
+      {
+        "id": "6E92ZMYYFZ",
+        "name": "Solar Filter"
+      },
+      {
+        "id": "9SIQT8TOJO",
+        "name": "Optical Tube Assembly"
+      },
+      {
+        "id": "HQTGWGPNH4",
+        "name": "The Comet Book"
+      },
+      {
+        "id": "L9ECAV7KIM",
+        "name": "Lens Cleaning Kit"
+      },
+      {
+        "id": "LS4PSXUNUM",
+        "name": "Red Flashlight"
+      },
+      {
+        "id": "OLJCESPC7Z",
+        "name": "National Park Foundation Explorascope"
+      }
+    ],
+    "currencies": [
+      "ZAR",
+      "ISK",
+      "ILS",
+      "RON",
+      "GBP",
+      "BRL",
+      "CZK",
+      "AUD",
+      "BGN",
+      "JPY",
+      "PHP",
+      "HUF",
+      "USD",
+      "SGD",
+      "IDR",
+      "CHF",
+      "TRY",
+      "NZD",
+      "THB",
+      "DKK",
+      "PLN",
+      "NOK",
+      "HRK",
+      "HKD",
+      "EUR",
+      "RUB",
+      "CAD",
+      "INR",
+      "SEK",
+      "KRW",
+      "CNY",
+      "MXN",
+      "MYR"
+    ],
+    "cart": {
+      "userId": ""
+    }
+  }
+}

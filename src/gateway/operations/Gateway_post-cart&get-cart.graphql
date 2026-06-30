@@ -1,6 +1,3 @@
-const TEST_SESSION =
-  "b2db7761-fb9d-4e0c-85df-5bd64446a484";
-
 mutation {
   addToCart(
     userId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
@@ -15,12 +12,8 @@ mutation {
   }
 }
 
-mutation {
-  addToCart(
-    userId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
-    productId: "LS4PSXUNUM"
-    quantity: 2
-  ) {
+query {
+  cart(sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484", currencyCode: "USD") {
     userId
     items {
       productId
@@ -32,16 +25,12 @@ mutation {
 Response:
 {
   "data": {
-    "addToCart": {
+    "cart": {
       "userId": "b2db7761-fb9d-4e0c-85df-5bd64446a484",
       "items": [
         {
           "productId": "66VCHSJNUP",
           "quantity": 1
-        },
-        {
-          "productId": "LS4PSXUNUM",
-          "quantity": 2
         }
       ]
     }

@@ -1,0 +1,53 @@
+mutation {
+  addToCart(
+    userId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
+    productId: "66VCHSJNUP"
+    quantity: 1
+  ) {
+    userId
+    items {
+      productId
+      quantity
+    }
+  }
+}
+
+query {
+  recommendations(
+    sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
+    currencyCode: "USD"
+  ) {
+    id
+    name
+    price
+  }
+}
+
+
+Response:
+{
+  "data": {
+    "recommendations": [
+      {
+        "id": "66VCHSJNUP",
+        "name": "Starsense Explorer Refractor Telescope",
+        "price": 349.95
+      },
+      {
+        "id": "1YMWWN1N4O",
+        "name": "Eclipsmart Travel Refractor Telescope",
+        "price": 129.95
+      },
+      {
+        "id": "OLJCESPC7Z",
+        "name": "National Park Foundation Explorascope",
+        "price": 101.96
+      },
+      {
+        "id": "2ZYFJ3GM2N",
+        "name": "Roof Binoculars",
+        "price": 209.95
+      }
+    ]
+  }
+}
