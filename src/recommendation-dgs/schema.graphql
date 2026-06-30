@@ -1,0 +1,16 @@
+type Query {
+  recommendations(
+    sessionId: ID!
+    currencyCode: String!
+    productIds: String
+  ): [RecommendationProduct]
+}
+
+type RecommendationProduct {
+  id: ID!
+  name: String
+  description: String
+  picture: String
+  price: Float
+  categories: [String]
+}

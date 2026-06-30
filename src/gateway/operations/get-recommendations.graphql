@@ -1,0 +1,10 @@
+query {
+  recommendations(
+    sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
+    currencyCode: "USD"
+  ) {
+    id
+    name
+    price
+  }
+}

@@ -16,6 +16,10 @@ const gateway = new ApolloGateway({
         name: "cart",
         url: "http://localhost:4003",
       },
+      {
+        name: "recommendation",
+        url: "http://localhost:4004",
+      },
     ],
   }),
 });
