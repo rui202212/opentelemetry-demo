@@ -11,18 +11,18 @@ Final implementation branch: **feature/dockerization**
 ## Architecture
 
 Frontend  
-    |  
-    v  
+ |  
+ v  
 Apollo Gateway  
-    |  
-    +-- product-dgs  
-    +-- currency-dgs  
-    +-- cart-dgs  
-    +-- recommendation-dgs  
-    |  
-    v  
-OpenTelemetry Demo REST Services  
-  
+ |  
+ +-- product-dgs  
+ +-- currency-dgs  
+ +-- cart-dgs  
+ +-- recommendation-dgs  
+ |  
+ v  
+OpenTelemetry Demo Backend Services
+
 ## Subgraphs
 
 ### product-dgs
@@ -38,7 +38,7 @@ query {
     name
   }
 }
-````
+```
 
 ### currency-dgs
 
@@ -58,10 +58,7 @@ Query:
 
 ```graphql
 query {
-  cart(
-    sessionId: "SESSION_ID"
-    currencyCode: "USD"
-  ) {
+  cart(sessionId: "SESSION_ID", currencyCode: "USD") {
     userId
   }
 }
@@ -71,11 +68,7 @@ Mutation:
 
 ```graphql
 mutation {
-  addToCart(
-    userId: "SESSION_ID"
-    productId: "66VCHSJNUP"
-    quantity: 1
-  ) {
+  addToCart(userId: "SESSION_ID", productId: "66VCHSJNUP", quantity: 1) {
     userId
   }
 }
@@ -87,10 +80,7 @@ Provides product recommendations.
 
 ```graphql
 query {
-  recommendations(
-    sessionId: "SESSION_ID"
-    currencyCode: "USD"
-  ) {
+  recommendations(sessionId: "SESSION_ID", currencyCode: "USD") {
     id
     name
   }
@@ -103,11 +93,11 @@ Each subgraph has its own Dockerfile.
 
 Docker services:
 
-* gateway
-* product-dgs
-* currency-dgs
-* cart-dgs
-* recommendation-dgs
+- gateway
+- product-dgs
+- currency-dgs
+- cart-dgs
+- recommendation-dgs
 
 Environment variables are used for service discovery.
 
@@ -154,10 +144,7 @@ query {
 
   currencies
 
-  cart(
-    sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484"
-    currencyCode: "USD"
-  ) {
+  cart(sessionId: "b2db7761-fb9d-4e0c-85df-5bd64446a484", currencyCode: "USD") {
     userId
   }
 
@@ -171,3 +158,28 @@ query {
 }
 ```
 
+## Notes regarding the demonstration environment
+
+During development and testing, the project was executed on Windows using Docker Desktop and the OpenTelemetry Demo stack.
+
+The OpenTelemetry ecosystem starts a significant number of containers and services
+(frontend, product catalog, cart, recommendation, checkout, telemetry collector,
+Grafana, Jaeger, Prometheus, databases, etc.).
+
+On the available development machines, Docker Desktop and WSL2 occasionally caused:
+
+- high memory consumption (> 90%)
+- disk utilization reaching 100%
+- reduced responsiveness of Docker Desktop
+- occasional timeouts from backend services
+- unstable behavior of some OpenTelemetry services
+
+To mitigate these issues:
+
+- GraphQL federation was developed and validated incrementally.
+- Each DGS was validated independently.
+- Federation tests were executed successfully through Apollo Gateway.
+- Dockerized federation was validated using dedicated Docker Compose services.
+
+If performance issues occur during the live demonstration, they are most likely related
+to local resource limitations rather than to the GraphQL federation implementation itself.
