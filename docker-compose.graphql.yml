@@ -1,0 +1,21 @@
+services:
+
+  product-dgs:
+    build:
+      context: ./src/product-dgs
+
+    environment:
+      BACKEND_URL: http://host.docker.internal:8080
+
+    ports:
+      - "4001:4001"
+
+  gateway:
+    build:
+      context: ./src/gateway
+
+    environment:
+      PRODUCT_DGS_URL: http://product-dgs:4001
+
+    ports:
+      - "4000:4000"

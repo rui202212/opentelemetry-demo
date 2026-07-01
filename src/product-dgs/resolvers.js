@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 
+const BASE_URL = process.env.BACKEND_URL || "http://localhost:8080";
+console.log("BASE_URL =", BASE_URL);
+
 exports.resolvers = {
   Query: {
     products: async (_, { currencyCode }) => {
       const res = await fetch(
-        `http://localhost:8080/api/products?currencyCode=${currencyCode}`,
+        `${BASE_URL}/api/products?currencyCode=${currencyCode}`,
       );
 
       if (!res.ok) {
@@ -14,7 +17,8 @@ exports.resolvers = {
       }
 
       const data = await res.json();
-      console.log("Calling products API...", data);
+      // console.log("Calling products API...", data);
+      console.log(`Retrieved ${data.length} products`);
 
       return data.map((p) => ({
         id: p.id,
