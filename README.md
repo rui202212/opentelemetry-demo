@@ -1,4 +1,5 @@
 <!-- markdownlint-disable-next-line -->
+
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry Demo
 
 [![Slack](https://img.shields.io/badge/slack-@cncf/otel/demo-brightgreen.svg?logo=slack)](https://cloud-native.slack.com/archives/C03B4CWV4DA)
@@ -60,7 +61,7 @@ adding a link below. The community is committed to maintaining the project and
 keeping it up to date for you.
 
 |                           |                |                                  |
-|---------------------------|----------------|----------------------------------|
+| ------------------------- | -------------- | -------------------------------- |
 | [AlibabaCloud LogService] | [Google Cloud] | [Parseable]                      |
 | [Amazon Web Services]     | [Grafana Labs] | [Sentry]                         |
 | [Apache Doris]            | [Guance]       | [ServiceNow Cloud Observability] |
@@ -166,3 +167,22 @@ For more information about the emeritus role, see the [community repository](htt
 [Tsuga]: https://github.com/tsuga-dev/opentelemetry-demo
 [Uptrace]: https://github.com/uptrace/uptrace/tree/master/example/opentelemetry-demo
 [VictoriaMetrics]: https://github.com/VictoriaMetrics-Community/opentelemetry-demo
+
+# GraphQL Federation Project
+
+_BOC-LIT-M2 projet Dev_  
+
+Final implementation branch: **feature/dockerization**
+
+Implemented:
+
+- Apollo Gateway
+- Product DGS
+- Currency DGS
+- Cart DGS
+- Recommendation DGS
+- Docker Compose
+- Dockerfiles
+- GraphQL Operations
+
+See: **src/gateway/README.md**
