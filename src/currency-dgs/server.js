@@ -5,10 +5,13 @@ const fetch = require("node-fetch");
 
 const typeDefs = gql(readFileSync("./schema.graphql", { encoding: "utf-8" }));
 
+const BASE_URL = process.env.BACKEND_URL || "http://localhost:8080";
+console.log("BASE_URL =", BASE_URL);
+
 const resolvers = {
   Query: {
     currencies: async () => {
-      const res = await fetch("http://localhost:8080/api/currency");
+      const res = await fetch(`${BASE_URL}/api/currency`);
       return await res.json();
     },
   },

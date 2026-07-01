@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 
+const BASE_URL = process.env.BACKEND_URL || "http://localhost:8080";
+console.log("BASE_URL =", BASE_URL);
+
 exports.resolvers = {
   Query: {
     cart: async (_, { sessionId, currencyCode }) => {
       const response = await fetch(
-        `http://localhost:8080/api/cart?sessionId=${sessionId}&currencyCode=${currencyCode}`,
+        `${BASE_URL}/api/cart?sessionId=${sessionId}&currencyCode=${currencyCode}`,
       );
 
       return await response.json();
@@ -14,7 +17,7 @@ exports.resolvers = {
   Mutation: {
     addToCart: async (_, { userId, productId, quantity }) => {
       const response = await fetch(
-        `http://localhost:8080/api/cart?currencyCode=USD`,
+        `${BASE_URL}/api/cart?currencyCode=USD`,
         {
           method: "POST",
           headers: {

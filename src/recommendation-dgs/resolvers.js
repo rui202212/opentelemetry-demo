@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 
+const BASE_URL = process.env.BACKEND_URL || "http://localhost:8080";
+console.log("BASE_URL =", BASE_URL);
+
 exports.resolvers = {
   Query: {
     recommendations: async (_, { sessionId, currencyCode, productIds }) => {
       const url =
-        `http://localhost:8080/api/recommendations` +
+        `${BASE_URL}/api/recommendations` +
         `?sessionId=${sessionId}` +
         `&currencyCode=${currencyCode}` +
         `&productIds=${productIds || ""}`;
