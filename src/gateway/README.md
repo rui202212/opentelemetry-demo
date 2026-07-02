@@ -9,20 +9,43 @@ The gateway aggregates multiple GraphQL subgraphs (DGS) and exposes a single Gra
 Final implementation branch: **feature/dockerization**
 
 ## Architecture
-
-Frontend  
- |  
- v  
-Apollo Gateway  
- |  
- +-- product-dgs  
- +-- currency-dgs  
- +-- cart-dgs  
- +-- recommendation-dgs  
- |  
- v  
-OpenTelemetry Demo Backend Services
-
+```text  
+                    +----------------+  
+                    |    Internet    |  
+                    +--------+-------+  
+                             |  
+                             v  
+                   +-------------------+  
+                   |  Apollo Gateway   |  
+                   +---------+---------+  
+                             |  
+      +------------+---------+----------+------------+  
+      |            |                    |            |  
+      v            v                    v            v  
+     +---------+ +-----------+      +-----------+ +----------------+  
+     |Product  | | Currency  |      | Cart DGS  | | Recommendation |  
+     |  DGS    | |    DGS    |      |           | |      DGS       |  
+     +---------+ +-----------+      +-----------+ +----------------+  
+           \                 |                /  
+            \                |               /  
+             +---------------+--------------+  
+                             |  
+                             v  
+                   +------------------+  
+                   | Frontend Proxy   |  
+                   |     (Envoy)      |  
+                   +------------------+  
+                             |  
+                             v  
+                   +------------------+  
+                   |    Frontend      |  
+                   +------------------+  
+                             |  
+                             v  
+                OpenTelemetry Demo Services  
+(Product Catalog, Cart, Currency, Recommendation, Checkout, Payment, Shipping, ...)  
+```  
+  
 ## Subgraphs
 
 ### product-dgs
